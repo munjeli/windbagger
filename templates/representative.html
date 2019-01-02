@@ -1,11 +1,27 @@
 {% extends "layout.html" %}
 {% block body %}
-    <h1>{{ level }}</h1>
-      <ul class=entries>
+      <div class='row justify-content-center m-1 rep_deck'>
       {% for entry in entries %}
-        <li><h2>{{ entry.name }}</h2>
+        <div class="card m-1 mt-2 shadow justify-content-center rep_card">
+        <div class="card-header p-1 text-center text-muted text-uppercase rep_header">{{ entry.title }}</div>
+        <img class="card-image-top rep_img" src="{{ entry.image_link }}" alt="{{ entry.name }}">
+            <div class="card-body p-1 rep_info">
+                <div class="card-title text-center mb-0">{{ entry.name }}</div>
+                <div class="text-center contacts"><small><a href="mailto:{{ entry.email[0] }}">{{ entry.email[0] }}</a></small></div>
+                <div class="row contacts">
+                    <div class="col text-left pr-0 ml-2"><small>{{ entry.phone[0] }}</small></div>
+                    <div class="col text-right mr-2"><a href="{{ entry.website[0] }}" alt="windbag website"><small>website</small></a></div>
+                </div>
+                <div id="channels">
+                    <div>{{ entry.twitter_id }}</div>
+                    <div>{{ entry.youtube_id }}</div>
+                    <div>{{ entry.facebook_id }}</div>
+                    <div>{{ entry.google_id }}</div>
+                </div>
+            </div>
+        </div>
       {% else %}
-        <li><em>Unbelievable.  No entries here so far</em>
+        <em>Unbelievable.  No entries here so far</em>
       {% endfor %}
-      </ul>
+      </div>
 {% endblock %}
